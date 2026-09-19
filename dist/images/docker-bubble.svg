@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <rect width="256" height="256" rx="128" fill="#ffffff"/>
+  <circle cx="128" cy="128" r="112" fill="#f8fafc" stroke="#38bdf8" stroke-width="6"/>
+  <g fill="#2496ed">
+    <rect x="72" y="105" width="24" height="20" rx="3"/><rect x="100" y="105" width="24" height="20" rx="3"/><rect x="128" y="105" width="24" height="20" rx="3"/>
+    <rect x="100" y="81" width="24" height="20" rx="3"/><rect x="128" y="81" width="24" height="20" rx="3"/>
+    <path d="M65 133h96c-4 30-25 49-57 49-22 0-39-11-49-29H39v-14h26z"/>
+  </g>
+  <text x="128" y="211" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#2496ed">DOCKER</text>
+</svg>
