@@ -1,37 +1,34 @@
 import { useState, useCallback } from "react";
 import "./styles/Work.css";
-import WorkImage from "./WorkImage";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 const projects = [
   {
-    title: "Chal Cinema",
-    category: "Online Movie Ticket Booking",
-    tools: "Spring Boot, Node.js, React Native, MySQL",
-    image: "/images/chal-cinema.png",
+    title: "Cloud-Native Document Processing & DevOps Platform",
+    category: "Cloud Architecture & DevOps",
+    dates: "07/2025 – 10/2026",
+    tools: "AWS, Terraform, Jenkins, Docker, ECS Fargate, Redis, PostgreSQL, S3, Prometheus, Grafana",
+    highlights: [
+      "Architected a cloud-native document processing platform on AWS using ECS Fargate, Application Load Balancer, S3, RDS PostgreSQL, ElastiCache Redis, ECR and IAM, separating API and asynchronous worker workloads for independent scaling and fault isolation.",
+      "Designed an end-to-end Jenkins CI/CD pipeline integrating automated testing, SonarQube quality gates, Docker image builds, Trivy vulnerability scanning, ECR publishing, Terraform deployment, database migrations and post-deployment smoke tests across Dev, QA and Production.",
+      "Provisioned multi-environment AWS infrastructure using reusable Terraform modules for VPC, private/public subnets, ECS services, ALB, RDS, Redis, S3, IAM and security groups, enabling consistent and repeatable environment provisioning.",
+      "Implemented asynchronous document processing using Redis-backed BullMQ workers with retry policies, failed-job handling and independent worker scaling, preventing CPU-intensive processing workloads from impacting API availability.",
+      "Implemented secure configuration and secrets management using AWS Secrets Manager and IAM least-privilege roles, eliminating hardcoded credentials from application source code and container images.",
+      "Implemented application and infrastructure observability using Prometheus, Grafana and CloudWatch, monitoring API latency, error rates, ECS resource utilization, queue depth, worker failures and database health for proactive incident detection.",
+      "Configured ECS autoscaling for API and worker workloads using CPU/memory utilization and asynchronous queue backlog as scaling signals, improving resource utilization during variable document-processing workloads.",
+    ],
   },
   {
-    title: "Mobile Shop Android App",
-    category: "E-Commerce & Inventory Management",
-    tools: "Java, Spring Boot, Android",
-    image: "/images/mobile-shop.png",
-  },
-  {
-    title: "Movie Browsing Android App",
-    category: "Entertainment",
-    tools: "Android, Java",
-    image: "/images/movie-browsing.png",
-  },
-  {
-    title: "Task Flow",
-    category: "Project Management & Ticketing",
-    tools: "Node.js, GraphQL, Auth0",
-    image: "/images/taskflow.png",
-  },
-  {
-    title: "Food Delivery App",
-    category: "Food Delivery",
-    tools: "Expo, React Native",
-    image: "/images/food-delivery.png",
+    title: "High-Traffic Banking Application (My eXp)",
+    category: "Banking Infrastructure & DevOps",
+    dates: "03/2024 – 07/2026",
+    tools: "Git, Jenkins, Ansible, Linux, Shell Scripting, Python, Docker, Kubernetes, Helm, Terraform, AWS (EC2, S3, VPC, IAM, CloudWatch, SNS), Prometheus, Grafana",
+    highlights: [
+      "Automated infrastructure provisioning and built a multi-stage Jenkins CI/CD pipeline for a high-traffic banking application, improving deployment speed and system reliability.",
+      "Managed source control (Git) and automated server provisioning with Ansible; containerized apps with Docker and deployed on Kubernetes (EKS) via Helm, with auto-scaling and self-healing for zero-downtime releases.",
+      "Provisioned secure AWS infrastructure (EC2, S3, VPC, IAM, Route 53) with Terraform (IaC), including a public/private subnet architecture with NAT/Internet Gateways for network segmentation.",
+      "Implemented monitoring and alerting using Prometheus, CloudWatch, and SNS, and designed Grafana dashboards to visualize application health and resource utilization.",
+      "Enforced security using Kubernetes Secrets, ConfigMaps, and IAM RBAC; developed Python/Shell automation scripts for deployment and operational tasks.",
+    ],
   },
 ];
 
@@ -65,7 +62,7 @@ const Work = () => {
     <div className="work-section" id="work">
       <div className="work-container section-container">
         <h2>
-          My <span>Work</span>
+          My <span>Projects</span>
         </h2>
 
         <div className="carousel-wrapper">
@@ -96,7 +93,7 @@ const Work = () => {
               }}
             >
               {projects.map((project, index) => (
-                <div className="carousel-slide" key={index}>
+                <div className="carousel-slide" key={project.title} aria-hidden={index !== currentIndex}>
                   <div className="carousel-content">
                     <div className="carousel-info">
                       <div className="carousel-number">
@@ -105,14 +102,17 @@ const Work = () => {
                       <div className="carousel-details">
                         <h4>{project.title}</h4>
                         <p className="carousel-category">{project.category}</p>
+                        <p className="carousel-dates">{project.dates}</p>
+                        <ul className="carousel-highlights">
+                          {project.highlights.map((highlight) => (
+                            <li key={highlight}>{highlight}</li>
+                          ))}
+                        </ul>
                         <div className="carousel-tools">
-                          <span className="tools-label">Tools & Features</span>
+                          <span className="tools-label">Tools used</span>
                           <p>{project.tools}</p>
                         </div>
                       </div>
-                    </div>
-                    <div className="carousel-image-wrapper">
-                      <WorkImage image={project.image} alt={project.title} />
                     </div>
                   </div>
                 </div>
@@ -130,6 +130,7 @@ const Work = () => {
                 }`}
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to project ${index + 1}`}
+                aria-pressed={index === currentIndex}
                 data-cursor="disable"
               />
             ))}

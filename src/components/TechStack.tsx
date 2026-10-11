@@ -22,7 +22,7 @@ const imageUrls = [
   "/images/springboot.png",
   "/images/HELM.png",
   "/images/helm1.png",
-  "/images/kubernetes1.png",
+  "/images/Kubernetes1.png",
   "/images/next.webp",
   "/images/node.webp",
   "/images/Ansible.png",

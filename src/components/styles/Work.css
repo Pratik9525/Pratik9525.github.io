@@ -341,3 +341,65 @@
     max-height: 250px;
   }
 }
+
+/* Project descriptions and navigation remain readable at every screen size. */
+.carousel-details {
+  min-width: 0;
+}
+
+.carousel-dates {
+  color: var(--accentColor);
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+
+.carousel-highlights {
+  padding-left: 20px;
+  margin: 16px 0 0;
+  display: grid;
+  gap: 12px;
+  color: #adacac;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.carousel-highlights li::marker {
+  color: var(--accentColor);
+}
+
+.carousel-tools p {
+  line-height: 1.7;
+}
+
+.carousel-arrow {
+  top: auto;
+  bottom: 0;
+  transform: none;
+}
+
+.carousel-arrow-left {
+  left: 0;
+}
+
+.carousel-arrow-right {
+  right: 0;
+}
+
+.carousel-dots {
+  min-height: 50px;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .carousel-info {
+    gap: 14px;
+  }
+
+  .carousel-number h3 {
+    font-size: 26px;
+  }
+
+  .carousel-highlights {
+    font-size: 14px;
+  }
+}
